@@ -44,7 +44,8 @@ class GraphKernelMultihop(gpflow.kernels.Kernel):
     def K_diag(self,X):
         diag_cov=tf.linalg.diag_part(self.K(X))
         return diag_cov
-    #
+    
+    #the following 2 functions are copied from https://github.com/yincheng/GGP/blob/master/ggp/kernels.py
     def _diag_tr_helper(self, node_features, adj_mat, x_tr):
         z = np.asarray([node_features[a == 1.] for a in adj_mat[x_tr.flatten()]])
         max_n = np.max([t.shape[0] for t in z])
